@@ -1,0 +1,136 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.colorBlanco{
+  color: #FFFF;
+}
+.containerHome{
+  display: flex;
+  flex-direction: column;
+  min-height: 85vh;
+}
+.body{
+  min-height: 85vh;
+}
+.containerPizzas {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;  
+  align-items: flex-start;  
+  margin-top: 150px;
+  margin-bottom: 30px;
+  gap: 20px;  
+  padding: 10px; 
+}
+
+.header{
+  background-color: #202429;
+  width: 100%;
+  height: 10vh;
+  color: #FFFF;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 30%;
+}
+.footerCard{
+  display: flex;
+  justify-content: space-between;
+}
+.footer{
+  background-color: #202429;
+  width: 100%;
+  height: 10vh;
+  color: #FFFF;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagenMapa{
+  width: 100%;
+  display: flex;
+}
+
+.imagenMapa > img {
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.map-container {
+  display: flex;
+  flex-wrap: nowrap;  /* Evita que pase abajo */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* SVG Container */
+#svg-container {
+  flex: 0 0 50%;       /* Ocupa siempre el 50% exacto */
+  max-width: 600px;    /* Puedes ajustar este valor */
+  min-width: 300px;    /* Para que no sea demasiado chico en pantallas pequeñas */
+}
+
+/* El propio SVG */
+#svg-container svg {
+  width: 100%;        /* Ocupará todo su contenedor */
+  height: auto;
+  display: block;
+}
+
+/* Info box */
+.info-box {
+  flex: 0 0 50%;
+  max-width: 600px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-box table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.info-box h3 {
+  text-align: center;
+}
+
+.info-box th,
+.info-box td {
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.info-box th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.hotspot {
+  cursor: pointer;
+  color: red;
+  font-size: 20px;
+}
+
+.hotspot i {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 2px 6px;
+}
