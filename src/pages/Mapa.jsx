@@ -3,10 +3,10 @@ import TablaInfo from "../components/TablaInfo";
 
 const Mapa = () => (
   <div className="map-container">
-    <SvgMapa />
-    <TablaInfo />
+      <SvgMapa />
+      <TablaInfo />
   </div>
-);
+);  
 
 export default Mapa;
 

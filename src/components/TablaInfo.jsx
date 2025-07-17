@@ -7,27 +7,32 @@ const TablaInfo = () => {
   // Si hay comuna seleccionada
   if (infoSeleccionada) {
     return (
-      <div className="info-box">
-        <h3>{infoSeleccionada.id}</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Especialidad</th>
-              <th>Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            {infoSeleccionada.info.map((line, i) => {
-              const [nombre, valor] = line.split(":").map((s) => s.trim());
-              return (
-                <tr key={i}>
-                  <td>{nombre}</td>
-                  <td>{valor}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="info-box mt-8">
+        <h3 className="text-center mb-3">{infoSeleccionada.id}</h3>
+        <div
+          className="table-responsive"
+          style={{ maxHeight: "800px", overflowY: "auto" }}
+        >
+          <table className="table table-striped table-bordered align-middle">
+            <thead className="table-dark">
+              <tr>
+                <th scope="col">Especialidad</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              {infoSeleccionada.info.map((line, i) => {
+                const [nombre, valor] = line.split(":").map((s) => s.trim());
+                return (
+                  <tr key={i}>
+                    <td>{nombre}</td>
+                    <td>{valor}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
@@ -48,32 +53,38 @@ const TablaInfo = () => {
       .filter(Boolean);
 
     return (
-      <div className="info-box">
-        <h3>{especialidadSeleccionada}</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Comuna</th>
-              <th>Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            {comunas.map((c, i) => (
-              <tr key={i}>
-                <td>{c.id}</td>
-                <td>{c.valor}</td>
+      <div className="info-box mt-8">
+        <h3 className="text-center mb-3">{especialidadSeleccionada}</h3>
+        <div
+          className="table-responsive"
+          style={{ maxHeight: "800px", overflowY: "auto" }}
+        >
+          <table className="table table-striped table-bordered align-middle">
+            <thead className="table-dark">
+              <tr>
+                <th scope="col">Comuna</th>
+                <th scope="col">Cantidad</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {comunas.map((c, i) => (
+                <tr key={i}>
+                  <td>{c.id}</td>
+                  <td>{c.valor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
+
   }
 
   // Si no hay nada seleccionado
   return (
-    <div className="info-box">
-      <p>Seleccione una comuna o filtre una especialidad.</p>
+    <div className="info-box mt-3">
+      <p className="text-center">Seleccione una comuna o filtre una especialidad.</p>
     </div>
   );
 };
