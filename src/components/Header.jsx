@@ -2,7 +2,8 @@ const Header = () => {
   return (
     <>
         <div className="header">
-            <h1 className='textCenter'>Salud del Maule</h1>
+            <img src="\src\assets\img\logoSSM.png" alt="Logo" class="logo-header" />
+      
         </div>
     </>
   )
