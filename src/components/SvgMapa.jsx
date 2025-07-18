@@ -78,8 +78,8 @@ const SvgMapa = () => {
               onClick={() => handleClick(id)}
             />
             <text
-              x={labelX + 10}
-              y={labelY + 2}
+              x={labelX + 12}
+              y={labelY + 10}
               fontSize="8"
               textAnchor="middle"
               fill="#202429"
