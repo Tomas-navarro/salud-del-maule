@@ -4,10 +4,10 @@ import data from "../assets/js/data.js";
 const TablaInfo = () => {
   const { infoSeleccionada, especialidadSeleccionada } = useMapa();
 
-  // Si hay comuna seleccionada
+  // Si hay comuna seleccionada, mostrar sus especialidades
   if (infoSeleccionada) {
     return (
-      <div className="info-box mt-8">
+      <div className="info-box mt-4">
         <h3 className="text-center mb-3">{infoSeleccionada.id}</h3>
         <div
           className="table-responsive"
@@ -16,8 +16,8 @@ const TablaInfo = () => {
           <table className="table table-striped table-bordered align-middle">
             <thead className="table-dark">
               <tr>
-                <th scope="col">Especialidad</th>
-                <th scope="col">Cantidad</th>
+                <th>Especialidad</th>
+                <th>Cantidad</th>
               </tr>
             </thead>
             <tbody>
@@ -37,16 +37,16 @@ const TablaInfo = () => {
     );
   }
 
-  // Si hay filtro activo pero ninguna comuna seleccionada
+  // Si hay filtro activo, mostrar todas las comunas con esa especialidad
   if (especialidadSeleccionada) {
-    const comunas = data
+    const comunasFiltradas = data
       .map((p) => {
         const match = p.info.find((line) =>
           line.startsWith(especialidadSeleccionada + ":")
         );
         if (match) {
           const valor = match.split(":")[1].trim();
-          return { id: p.id, valor };
+          return { comuna: p.id, cantidad: valor };
         }
         return null;
       })
@@ -62,15 +62,15 @@ const TablaInfo = () => {
           <table className="table table-striped table-bordered align-middle">
             <thead className="table-dark">
               <tr>
-                <th scope="col">Comuna</th>
-                <th scope="col">Cantidad</th>
+                <th>Comuna</th>
+                <th>Cantidad</th>
               </tr>
             </thead>
             <tbody>
-              {comunas.map((c, i) => (
+              {comunasFiltradas.map((item, i) => (
                 <tr key={i}>
-                  <td>{c.id}</td>
-                  <td>{c.valor}</td>
+                  <td>{item.comuna}</td>
+                  <td>{item.cantidad}</td>
                 </tr>
               ))}
             </tbody>
@@ -78,15 +78,9 @@ const TablaInfo = () => {
         </div>
       </div>
     );
-
   }
 
-  // Si no hay nada seleccionado
-  return (
-    <div className="info-box mt-3">
-      <p className="text-center">Seleccione una comuna o filtre una especialidad.</p>
-    </div>
-  );
 };
 
 export default TablaInfo;
+

@@ -3,7 +3,9 @@ const Header = () => {
     <>
         <div className="header">
             <img src="\src\assets\img\logoSSM.png" alt="Logo" class="logo-header" />
-      
+            <div className="titulo">
+                 <h1>Salud del maule</h1> 
+            </div>
         </div>
     </>
   )

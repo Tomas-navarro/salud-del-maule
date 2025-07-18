@@ -34,8 +34,8 @@ const SvgMapa = () => {
       preserveAspectRatio="xMidYMid meet"
       style={{ width: "100%", height: "auto", display: "block" }}
     >
+      {/* Render primero los path */}
       {pathsData.map(({ id, d }) => {
-        // ¿Esta comuna tiene la especialidad filtrada?
         let hasEspecialidad = false;
         if (especialidadSeleccionada) {
           const comunaData = data.find((p) => p.id === id);
@@ -46,55 +46,70 @@ const SvgMapa = () => {
           }
         }
 
-        // Color de la comuna
         let fillColor = "#cccccc";
         if (especialidadSeleccionada && hasEspecialidad) {
-          fillColor = "#FF9800"; // Naranja resaltado
+          fillColor = "#FF9800";
         } else if (infoSeleccionada?.id === id) {
-          fillColor = "#2196F3"; // Azul selección
-        }
-
-        // Etiqueta
-        const match = d.match(/M\s*([\d.-]+),\s*([\d.-]+)/);
-        let labelX = 0;
-        let labelY = 0;
-        if (match) {
-          labelX = parseFloat(match[1]);
-          labelY = parseFloat(match[2]);
+          fillColor = "#2196F3";
         }
 
         return (
-          <g key={id}>
-            <path
-              d={d}
-              fill={fillColor}
-              stroke="#333"
-              strokeWidth="1"
-              style={{ cursor: "pointer", transition: "fill 0.2s ease" }}
-              onMouseEnter={(e) => (e.target.style.fill = "#FF5722")}
-              onMouseLeave={(e) => {
-                e.target.style.fill = fillColor;
-              }}
-              onClick={() => handleClick(id)}
-            />
-            <text
-              x={labelX + 12}
-              y={labelY + 10}
-              fontSize="8"
-              textAnchor="middle"
-              fill="#202429"
-              pointerEvents="none"
-              style={{
-                paintOrder: "stroke",
-                stroke: "#fff",
-                strokeWidth: 2,
-              }}
-            >
-              {id}
-            </text>
-          </g>
+          <path
+            key={id}
+            d={d}
+            fill={fillColor}
+            stroke="#333"
+            strokeWidth="1"
+            style={{ cursor: "pointer", transition: "fill 0.2s ease" }}
+            onMouseEnter={(e) => (e.target.style.fill = "#FF5722")}
+            onMouseLeave={(e) => (e.target.style.fill = fillColor)}
+            onClick={() => handleClick(id)}
+          />
         );
       })}
+
+      {/* Luego, renderiza los pines */}
+      <g>
+  {pathsData.map(({ id, d }) => {
+    const match = d.match(/M\s*([\d.-]+),\s*([\d.-]+)/);
+    let labelX = 0;
+    let labelY = 0;
+    if (match) {
+      labelX = parseFloat(match[1]);
+      labelY = parseFloat(match[2]);
+    }
+
+    return (
+      <foreignObject
+        key={`pin-${id}`}
+        x={labelX}
+        y={labelY}
+        width="30"
+        height="15"
+      >
+        <div
+          xmlns="http://www.w3.org/1999/xhtml"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "2px",
+            background: "white",
+            borderRadius: "10px",
+            padding: "1px 4px",
+            fontSize: "5px",
+            color: "#2196f3",
+            boxShadow: "0 0.5px 1px rgba(0,0,0,0.2)",
+            pointerEvents: "none",
+          }}
+        >
+          <span style={{ fontSize: "4px" }}>📍</span>
+          <span>{id}</span>
+        </div>
+      </foreignObject>
+    );
+  })}
+</g>
+
     </svg>
   );
 };

@@ -27,20 +27,27 @@
   padding: 10px; 
 }
 
-.header{
+.header {
   background-color: #202429;
   width: 100%;
   height: 16vh;
   color: #FFFF;
-  text-align: center;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
 .logo-header {
   height: 16vh;
+  width: auto; /* Mantiene la proporción del logo */
 }
+
+.titulo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .logo-footer {
   height: 200px;
@@ -59,39 +66,52 @@
   margin: auto auto;
 }
 
-.footer{
-  background-color: #000000;
+.footer {
+  background-color: #dbe7f3;
   width: 100%;
   color: #502e2e;
   padding: 15px 0;
 }
 
-.footer-row{
+.container-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-row {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
 }
 
-.footer-links{
-  width: 40%;
-  padding: 0 10px;
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.footer-links h4{
+.logo-footer {
+  height: 200px; /* Ajusta según necesidad */
+}
+
+.footer-links h4 {
   font-size: 25px;
-  color: #ffffff;
-  margin-bottom: 20px;
+  color: #202429;
+  margin-bottom: 10px;
   font-weight: 500;
   border-bottom: 5px solid #3755c0;
   padding-bottom: 5px;
   display: inline-block;
 }
 
-.social-links a{
+.social-links a {
   display: inline-block;
   min-height: 40px;
   width: 40px;
   background-color: #8e8888;
-  margin: 0 15px 10px 0;
+  margin: 0 10px 0 0;
   text-align: center;
   line-height: 40px;
   border-radius: 10%;
@@ -99,7 +119,7 @@
   transition: all .3s ease;
 }
 
-.social-links a:hover{
+.social-links a:hover {
   background-color: #3755c0;
 }
 
