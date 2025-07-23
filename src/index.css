@@ -166,7 +166,26 @@
 .filtro {
   grid-column: 2;
   grid-row: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;        /* ocupa el ancho del grid */
+  height: 70px;       /* ⬅️ ALTO FIJO */
+  padding: 0;
+  margin: 0;
 }
+
+.filtro-inner {
+  max-width: 586px;   /* ⬅️ ANCHO MÁXIMO */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+
 
 .tabla {
   grid-column: 2;
