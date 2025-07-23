@@ -1,8 +1,8 @@
 const data = [
   {
     "id": "Curico",
-    "posX": "40.0%",
-    "posY": "50.0%",
+    "posX": "250px",
+    "posY": "147px",
     "info": [
       "Pediatría: 2",
       "Traumatología: 2",

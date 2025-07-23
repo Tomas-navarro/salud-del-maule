@@ -11,7 +11,7 @@ const TablaInfo = () => {
         <h3 className="text-center mb-3">{infoSeleccionada.id}</h3>
         <div
           className="table-responsive"
-          style={{ maxHeight: "800px", overflowY: "auto" }}
+          style={{ maxHeight: "500px", overflowY: "auto" }}
         >
           <table className="table table-striped table-bordered align-middle">
             <thead className="table-dark">
@@ -53,7 +53,7 @@ const TablaInfo = () => {
       .filter(Boolean);
 
     return (
-      <div className="info-box mt-8">
+      <div className="info-box mt-3">
         <h3 className="text-center mb-3">{especialidadSeleccionada}</h3>
         <div
           className="table-responsive"

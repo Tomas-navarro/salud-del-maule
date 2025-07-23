@@ -92,6 +92,7 @@
   justify-content: center;
 }
 
+
 .logo-footer {
   height: 200px; /* Ajusta según necesidad */
 }
@@ -133,6 +134,43 @@
   justify-content: center;
   align-items: center;
 
+}
+
+.svgContainer svg {
+  align-self: center;
+  min-width: 700px;
+  min-height: 600px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;      /* 2 columnas iguales */
+  grid-template-rows: auto auto auto auto; /* 4 filas */
+  gap: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.informacion {
+  grid-column: 1 / span 2; /* Ocupa ambas columnas (fila 1) */
+}
+
+.mapa {
+  grid-column: 1;
+  grid-row: 2 / span 3; /* Ocupa filas 2, 3 y 4 */
+}
+
+.filtro {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.tabla {
+  grid-column: 2;
+  grid-row: 3 / span 2; /* Ocupa filas 3 y 4 */
 }
 
 .map-container {

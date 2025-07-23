@@ -20,18 +20,19 @@ const Filtros = () => {
   return (
     <div className="container my-3">
       <div className="row justify-content-center">
-        <div className="col-md-6">
+        <div className="col-md-12">
           <label htmlFor="select-especialidad" className="form-label">
             <strong>Filtrar especialidad:</strong>
           </label>
           <select
             id="select-especialidad"
-            className="form-select"
+            className="form-select w-100"
             aria-label="Filtro de especialidad"
             value={especialidadSeleccionada || ""}
             onChange={handleChange}
           >
-            <option value="">-- Todas las especialidades --</option>
+
+            <option value="">Todas las especialidades</option>
             {especialidades.map((esp) => (
               <option key={esp} value={esp}>
                 {esp}
