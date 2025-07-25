@@ -27,20 +27,15 @@ const SvgMapa = () => {
       });
   }, []);
 
-  // 2️⃣ Después de renderizar los <path>, calculo sus centros
   useLayoutEffect(() => {
-    if (!svgRef.current) return;
-    const svgEl = svgRef.current;
-    const labels = Array.from(svgEl.querySelectorAll("path[id]")).map((pathEl) => {
-      const bbox = pathEl.getBBox();
-      return {
-        id: pathEl.id,
-        x: bbox.x + bbox.width / 2,
-        y: bbox.y + bbox.height / 2,
-      };
-    });
-    setLabelPositions(labels);
-  }, [pathsData]);
+    // Mapear los datos con posiciones manuales
+    const manualLabels = data.map(({ id, posX, posY }) => ({
+      id,
+      x: parseFloat(posX) - 10,
+      y: parseFloat(posY) - 5,
+    }));
+    setLabelPositions(manualLabels);
+  }, []);
 
   const handleClick = (id) => {
     const punto = data.find((p) => p.id === id);
@@ -86,28 +81,43 @@ const SvgMapa = () => {
 
       {/* 📍 LUEGO, SOBRE TODO, RENDERIZAR LOS PINS */}
       <g>
-        {labelPositions.map(({ id, x, y }) => (
-          <foreignObject key={`pin-${id}`} x={x} y={y} width="30" height="15">
-            <div
-              xmlns="http://www.w3.org/1999/xhtml"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "2px",
-                background: "white",
-                borderRadius: "10px",
-                padding: "1px 4px",
-                fontSize: "5px",
-                color: "#2196f3",
-                boxShadow: "0 0.5px 1px rgba(0,0,0,0.2)",
-                pointerEvents: "none",
-              }}
+        {labelPositions.map(({ id, x, y }) => {
+          const charWidth = 4; // Estimación del ancho por caracter
+          const padding = 4; // Padding total horizontal
+          const width = id.length * charWidth + padding;
+
+          return (
+            <foreignObject
+              key={`pin-${id}`}
+              x={x} // Centrado horizontal
+              y={y}         // Ajuste vertical opcional
+              width={width}
+              height="16"
             >
-              <span style={{ fontSize: "4px" }}>📍</span>
-              <span>{id}</span>
-            </div>
-          </foreignObject>
-        ))}
+              <div
+                xmlns="http://www.w3.org/1999/xhtml"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "2px",
+                  background: "rgba(255, 255, 255, 0.89)",
+                  borderRadius: "10px",
+                  padding: "1px 4px",
+                  fontSize: "6px",
+                  fontWeight: "bold",
+                  color: "#0876d0ff",
+                  boxShadow: "0 0.5px 1px rgba(0,0,0,0.2)",
+                  pointerEvents: "none",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <span style={{ fontSize: "4px" }}>📍</span>
+                <span>{id}</span>
+              </div>
+            </foreignObject>
+          );
+        })}
       </g>
     </svg>
   );
